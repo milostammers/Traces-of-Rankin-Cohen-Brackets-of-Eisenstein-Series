@@ -1,6 +1,6 @@
 # Traces-of-Rankin-Cohen-Brackets-of-Eisenstein-Series
 
-This program determines whether the first Fourier coefficient of \mathcal F_{D, k, 2} is 0. The program computes the ratio between $f'_{D, k, 2}(1)$ and $\sigma_{k-1, D, 1}(0) k(k+1)$. We use that $\sigma_{k-1, D, 1}$ is given by 
+This program determines whether the first Fourier coefficient of $\mathcal F_{D, k, 2}$ is $0$. The program computes the ratio between $f'_{D, k, 2}(1)$ and $\sigma_{k-1, D, 1}(0) k(k+1)$. We use that $\sigma_{k-1, D, 1}$ is given by 
 $$\frac{(k-1)! D^k}{(-2\pi i)^k G(\overline{\chi_D})}L(k, \overline{\chi_D})$$
 and use Stirling's Approximation $(k-1)! \sim \sqrt{2\pi(k-1)} ((k-1)/e)^(k-1) e^{1/(12(k-1)+r_k)}$ for some constant $0<r_k<1$. To reduce the magnitude of numbers in computing $f'_{D, k, 2}(1)$, a factor of $((k-1)D/(2\pi))^{k-1}$ is taken out from the above expression and instead computed in the $\sigma_{k-1, D_1, D_2}(a_1a_2)$ term in $f'_{D, k, 2}(1)$. For similar reasons, the $k(k+1)$ from the term $\sigma_{k-1, D, 1}(0) k(k+1)$ is factored out and computed with $C_{1, a_1, a_2}$. 
 
