@@ -66,15 +66,15 @@ def nonVanFC(A):
                 f0 = math.sqrt(2*math.pi*(k-1))*D*math.pow(D//abs(D), k-1)*(lcalc.twist_values(k, D, D)[0][1])/(Ipow(k)*2*math.pi*chi.gauss_sum_numerical())
             else:
                 f0 = math.sqrt(2*math.pi*(k-1))*(lcalc.value(k))/(Ipow(k)*2*math.pi)
-            ratio = -fp/f0
+            R = -fp/f0
             print("k =", k)
-            print(ratio)
+            print(R)
             print("")
-            err = numpy.log(ratio)*(k-1)
+            err = numpy.log(R)*(k-1)
             if 0 < err and err < 0.2:
                 print("!"*100)
                 print("Potential Failure: D =", str(D), "k =", str(k))
-                print("Ratio =", str(ratio))
+                print("Ratio =", str(R))
                 print("!"*100)
                 print("")
 
