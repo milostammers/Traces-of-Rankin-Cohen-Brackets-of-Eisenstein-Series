@@ -49,15 +49,15 @@ def fprime(k, D):
             sum += kronecker_symbol(D_2, -1)*math.pow(absD_2, -2)*sigma(k, D_1, D_2, D, (a_1*a_2))*C(k, a_1, a_2)
     return sum
 
-# Checks non-vanishing of the first Fourier coefficient for k <= min((A-4)/2, 2*pi*e*|D|)
+# Checks non-vanishing of the first Fourier coefficient for pi*e*|D|+4 < A and 4 <= k < pi*e*|D|/2
 def nonVanFC(A):
-    for D in range(-(int)((A-4)/(4*math.pi*math.e))-1, (int)((A-4)/(4*math.pi*math.e)+1)):
+    for D in range(-(int)((A-4)/(math.pi*math.e))-1, (int)((A-4)/(math.pi*math.e)+1)):
         if not isFundDisc(D):
             continue
         print("D =", D)
         print("-"*50)
         print("")
-        for k in range(4, (int)(2*math.pi*math.e*abs(D))):
+        for k in range(4, (int)(1+math.pi*math.e*abs(D)/2)):
             if math.pow(-1, k)*(abs(D)//D) == -1:
                 continue
             fp = fprime(k,D)
@@ -66,17 +66,17 @@ def nonVanFC(A):
                 f0 = math.sqrt(2*math.pi*(k-1))*D*math.pow(D//abs(D), k-1)*(lcalc.twist_values(k, D, D)[0][1])/(Ipow(k)*2*math.pi*chi.gauss_sum_numerical())
             else:
                 f0 = math.sqrt(2*math.pi*(k-1))*(lcalc.value(k))/(Ipow(k)*2*math.pi)
-            R = -fp/f0
+            ratio = -fp/f0
             print("k =", k)
-            print(R)
+            print(ratio)
             print("")
-            err = numpy.log(R)*(k-1)
+            err = numpy.log(ratio)*(k-1)
             if 0 < err and err < 0.2:
                 print("!"*100)
                 print("Potential Failure: D =", str(D), "k =", str(k))
-                print("Ratio =", str(R))
+                print("Ratio =", str(ratio))
                 print("!"*100)
                 print("")
-
-A = 504
-nonVanFC(504)
+    
+A = 450
+nonVanFC(A)
